@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>Login</title>
+</head>
+<body>
+  <h4>Enter credentials</h4>
+
+  <form class="" action="{% url 'main_page' %}" method="post">
+    {% csrf_token %}
+    Email:<br>
+    <input type="email" name="customerEmail" placeholder="something@google.com">
+    <br><br>
+
+    Password:<br>
+    <input type="password" name="customerPassword"><br><br>
+    <input type="submit" name="Login"><br><br>
+    <!-- <a href="customer/sign_up.html">Not a registered user yet?</a> -->
+  </form>
+
+</body>
+</html>
