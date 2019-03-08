@@ -7,7 +7,7 @@
 <body>
   <h4>Enter credentials</h4>
 
-  <form class="" action="{% url 'main_page' %}" method="post">
+  <form class="" action="{% url 'validateCustomer' %}" method="post">
     {% csrf_token %}
     Email:<br>
     <input type="email" name="customerEmail" placeholder="something@google.com">
@@ -16,7 +16,7 @@
     Password:<br>
     <input type="password" name="customerPassword"><br><br>
     <input type="submit" name="Login"><br><br>
-    <!-- <a href="customer/sign_up.html">Not a registered user yet?</a> -->
+    <a href="{% url 'sign_up' %}">Not a registered user yet?</a>
   </form>
 
 </body>

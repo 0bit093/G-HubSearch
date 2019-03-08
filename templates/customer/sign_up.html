@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>Login</title>
+</head>
+<body>
+  <h4>Sign-Up</h4>
+
+  <form class="" action="{% url 'create_customer' %}" method="post">
+    {% csrf_token %}
+    First Name:<br>
+    <input type="text" name="customerFirstName" placeholder="John"><br>
+    <br>Last Name:<br>
+    <input type="text" name="customerLastName" placeholder="Doe"><br>
+    <br>Email:<br>
+    <input type="email" name="customerEmail" placeholder="something@google.com"><br>
+    <br>Password:<br>
+    <input type="password" name="customerPassword"><br>
+    <br><br>
+
+    <input type="submit" name="Sign-Up" value="Register"><br><br>
+  </form>
+
+</body>
+</html>

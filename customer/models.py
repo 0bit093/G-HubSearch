@@ -1,7 +1,7 @@
 from django.db import models
 
 # Create your models here.
-class customerInfo(models.Model):
+class Customer(models.Model):
     # primary key for customer table - autoincrements
     customerId = models.AutoField(primary_key=True)
     firstName = models.CharField(max_length=50,unique=False)
