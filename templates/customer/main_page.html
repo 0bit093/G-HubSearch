@@ -5,6 +5,31 @@
     <title>Main page</title>
   </head>
   <body>
-    Welcome:{{first_Name}}
+
+    <div class="container">
+      <div class="Welcome_heading">
+        Welcome {{obj.firstName}}!!
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="User_options">
+        Here make a table and list options
+      </div>
+
+      <div class="Find_gitHub_users">
+        <form class="" action="{% url 'find_user' %}" method="post">
+          {% csrf_token %}
+          Enter gitHub username to search github
+          <input type="text" name="user_to_find" placeholder="JohnDoe">
+          <input type="submit" name="Search">
+        </form>
+      </div>
+
+    </div>
+
+
+
+
   </body>
 </html>

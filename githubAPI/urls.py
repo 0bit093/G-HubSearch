@@ -24,5 +24,7 @@ urlpatterns = [
 
     # my changes
     path('',include('customer.urls')),
-    path('find_user/',include('firstApp.urls')),
+
+    # linking a path to restapi urls
+    path('',include('restapi.urls')),
 ]

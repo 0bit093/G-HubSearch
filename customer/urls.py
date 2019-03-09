@@ -11,5 +11,9 @@ urlpatterns = [
     # to validate customer
     path('validate/',views.validateCustomer,name='validateCustomer'),
 
-    path('main_page/',views.main_page,name='main_page'),
+    # linking a path to restapi urls
+    path('',include('restapi.urls')),
+
+    # path('main_page/',views.main_page,name='main_page'),
+
 ]
