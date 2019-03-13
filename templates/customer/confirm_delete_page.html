@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>Delete Confirmation</title>
+</head>
+<body>
+  <strong>Confrim to delete account by entering password</strong><br><br>
+  <form class="" action="{% url 'delete_customer' %}" method="post">
+    {% csrf_token %}
+    Password : <input type="password" name="customer_pswd"><br><br>
+    <input type="submit" name="submit_btn" value="Delete">
+  </form>
+</body>
+</html>

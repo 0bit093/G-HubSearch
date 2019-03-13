@@ -1,18 +1,25 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Results</title>
-  </head>
-  <body>
-    <h4>Result for gitHub username serached:</h4>
-    <strong>UserName:</strong> {{obj.login}}<br>
-    <strong>Email:</strong> {{obj.email}}<br>
-    <strong>Name:</strong> {{obj.name}}<br>
-    <strong>Company:</strong> {{obj.company}}<br>
-    <strong>Location:</strong> {{obj.location}}<br>
-    <strong>Number of followers:</strong> {{obj.followers}}<br>
-    <strong>Created account on:</strong> {{obj.created_at}}<br>
-    <strong>Last activity seen:</strong> {{obj.updated_at}}<br>
-  </body>
+<head>
+  <meta charset="utf-8">
+  <title>Results</title>
+</head>
+<body>
+  <h4>Result for gitHub username searched:</h4>
+  <strong>Username: </strong> {{obj.login}}<br>
+  <strong>Email: </strong> {{obj.email}}<br>
+  <strong>Name: </strong> {{obj.name}}<br>
+  <strong>Company: </strong> {{obj.company}}<br>
+  <strong>Location: </strong> {{obj.location}}<br>
+  <strong>Number of public repos: </strong> {{obj.public_repos}}<br>
+  <strong>User's Blog: </strong>
+  {% if obj.blog is not None %}
+  <a href="{{obj.blog}}">{{obj.blog}}</a><br>
+  {% else %}
+  <h2>Blog not available</h2> <br>
+  {% endif %}
+  <strong>Number of followers: </strong> {{obj.followers}}<br>
+  <strong>Created account on: </strong> {{obj.created_at}}<br>
+  <strong>Last activity seen: </strong> {{obj.updated_at}}<br>
+</body>
 </html>

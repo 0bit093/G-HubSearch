@@ -9,10 +9,13 @@
 
   <form class="" action="{% url 'validateCustomer' %}" method="post">
     {% csrf_token %}
+
+    {% block new_login_page %}
+    {% endblock new_login_page%}
+
     Email:<br>
     <input type="email" name="customerEmail" placeholder="something@google.com">
     <br><br>
-
     Password:<br>
     <input type="password" name="customerPassword"><br><br>
     <input type="submit" name="Login"><br><br>

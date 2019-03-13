@@ -1,35 +1,53 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Main page</title>
-  </head>
-  <body>
+<head>
+  <meta charset="utf-8">
+  <title>Main page</title>
+  <style>
+  #User_options{
+    float:left;
+    width: 50%;
+  }
+  #Find_gitHub_users{
+    float: left;
+    width: 50%;
+  }
+  #show_customer_info{
+    float:left;
+  }
+  </style>
+</head>
+<body>
 
-    <div class="container">
-      <div class="Welcome_heading">
-        Welcome {{obj.firstName}}!!
-      </div>
+  <div class="wrapper_1">
+    <div id="Welcome_heading">
+      <h3>Welcome {{obj.firstName}}!!</h3><br><br>
+    </div>
+  </div>
+
+  <div class="wrapper_1">
+    <div id="User_options">
+      <a href="{% url 'showCustomerInfo' %}">Show my Info</a><br><br>
+      <a href="{% url 'update_info_page' %}">Update Info</a><br><br>
+      <a href="{% url 'confirm_delete_customer' %}">Delete Account</a><br><br>
+      <a href="{% url 'logout' %}">Logout</a><br><br><br><br>
     </div>
 
-    <div class="container">
-      <div class="User_options">
-        Here make a table and list options
+    <div id="Find_gitHub_users">
+      <form class="" action="{% url 'find_user' %}" method="post">
+        {% csrf_token %}
+        Username on gitHub:
+        <input type="text" name="user_to_find" placeholder="JohnDoe"><br><br>
+        <input type="submit" name="Search" value="Find user">
+        <br>
+        <br>
+        <br>
       </div>
 
-      <div class="Find_gitHub_users">
-        <form class="" action="{% url 'find_user' %}" method="post">
-          {% csrf_token %}
-          Enter gitHub username to search github
-          <input type="text" name="user_to_find" placeholder="JohnDoe">
-          <input type="submit" name="Search">
-        </form>
+      <div id="show_customer_info">
+        {% block customer_info %}
+        {% endblock customer_info %}
       </div>
-
     </div>
-
-
-
-
   </body>
-</html>
+  </html>

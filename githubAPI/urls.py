@@ -21,10 +21,8 @@ from django.urls import include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-
     # my changes
     path('',include('customer.urls')),
-
     # linking a path to restapi urls
     path('',include('restapi.urls')),
 ]
