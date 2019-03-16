@@ -2,8 +2,8 @@ from django.shortcuts import render
 
 from django.http import HttpRequest
 from customer.models import Customer
-# to logout the user
-from django.contrib.auth import logout
+from django.contrib.auth import logout # to logout the user
+from restapi.views import is_change
 
 def login_page(request):
     return render(request,'customer/login.html')
@@ -38,10 +38,17 @@ def validateCustomer(request):
     query_set = list(Customer.objects.all().filter(email=Email,password=Password).values())
     # if returned query set not empty -> user match in DB
     if query_set:
-        # saving the user in session - to use this user's info in other views
+        # saving user in session - to use this user's info in other views
         request.session['customer_obj'] = query_set[0]
         my_dict = {'obj': query_set[0]}
-        return render(request,'customer/main_page.html',context=my_dict)
+        # check if there is a new activity on previous github username searched by the customer
+        truth_value = is_change(request)
+        # if returns true means new activity on github
+        if truth_value == True:
+            my_dict['username'] = query_set[0]['githubUserName']          
+            return render(request,'restapi/email.html',context=my_dict)   # call child template extending customer/main_page
+        else:
+            return render(request,'customer/main_page.html',context=my_dict) 
     else:
         return render(request,'customer/login.html')
 
@@ -67,7 +74,7 @@ def show_update_page_view(request):
 def updateCustomer(request):
     curr_session_obj = request.session.get('customer_obj')
     old_pswd = request.POST.get('customerPassword')
-    # confirms if the customer is only updating or not by comparing old pswd in DB
+    # confirms if customer is only updating or not by comparing old pswd in DB
     if old_pswd == curr_session_obj['password']:
         # grab values from form
         pswd_update = request.POST.get('new_password')

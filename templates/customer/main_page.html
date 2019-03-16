@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
 <head>
   <meta charset="utf-8">
-  <title>Main page</title>
+  <title>Home</title>
   <style>
   #User_options{
     float:left;
@@ -42,6 +42,11 @@
         <br>
         <br>
         <br>
+      </div>
+
+      <div>
+        {% block notification %}
+        {% endblock notification %}
       </div>
 
       <div id="show_customer_info">
